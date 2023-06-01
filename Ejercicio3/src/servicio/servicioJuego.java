@@ -28,7 +28,7 @@ public class servicioJuego {
     private ArrayList<Carta> monton = barajaN1.getMontonCartas();
     private Scanner leer = new Scanner(System.in).useDelimiter("\n");
 
-    public Baraja crearBaraja() {
+    private Baraja crearBaraja() {
         String[] palos =
         {
             "Basto", "Oro", "Espada", "Copa"
@@ -42,6 +42,8 @@ public class servicioJuego {
                 {
                     continue;
                 }
+                // ambas dos formas para settear el mazo funcionan c:
+                //barajaN1.getMazo().add(new Carta(i, palos[j]));
                 mazo.add(new Carta(i, palos[j]));
             }
         }
@@ -51,12 +53,12 @@ public class servicioJuego {
     }
 
     //este metodo baraja las castas con la utilidad SHUFFLE de collections
-    public void barajarCartas() {
+    private void barajarCartas() {
         System.out.println("Se barajo el mazo: ");
         Collections.shuffle(barajaN1.getMazo());
     }
 
-    public void siguienteCarta() {
+    private void siguienteCarta() {
         if (barajaN1.getMazo().size() > 1)
         {
             System.out.println("La carta se entrego. " + barajaN1.getMazo().get(0));
@@ -66,16 +68,18 @@ public class servicioJuego {
         {
             System.out.println("La carta se entrego. " + barajaN1.getMazo().get(0));
             monton.add(barajaN1.getMazo().remove(0));
+            // otra forma de realizar el ejercicio pero solo utizando la baraja y el get
+//            barajaN1.getMontonCartas().add(barajaN1.getMazo().remove(0));
             System.out.println("NO QUEDAN MAS CARTAS!!!");
         }
     }
 
     // muestra las cartas disponibles por repartir aun en el mazo
-    public void cartasDisponibles() {
+    private void cartasDisponibles() {
         System.out.println("Quedan " + barajaN1.getMazo().size() + " cartas por repartir.");
     }
 
-    public void darCartas() {
+    private void darCartas() {
         System.out.println("Cuantas cartas quiere pedir?");
         int cartasPedidas = leer.nextInt();
 
@@ -91,7 +95,7 @@ public class servicioJuego {
         }
     }
 
-    public void cartasMonton() {
+    private void cartasMonton() {
         if (barajaN1.getMontonCartas().isEmpty())
         {
             System.out.println("No han salido cartas.");
@@ -102,7 +106,7 @@ public class servicioJuego {
     }
 
     //         System.out.println(barajaN1.getMazo());
-    public void mostrarBaraja() {
+    private void mostrarBaraja() {
         for (Carta montonCarta : barajaN1.getMazo())
         {
             System.out.println(montonCarta.toString());
@@ -112,7 +116,7 @@ public class servicioJuego {
     public void menuJuego() {
         int op = 0;
         String confirmacion = "";
-            System.out.println("Bienvenido al casi juego!!");
+        System.out.println("Bienvenido al casi juego!!");
 
         do
         {
@@ -150,10 +154,12 @@ public class servicioJuego {
                 case 7:
                     mostrarBaraja();
                     break;
-                default:
+                case 8:
                     System.out.println("Desea salir? S/N");
                     confirmacion = leer.next();
                     break;
+                default:
+                    System.out.println("NO ES UNA OPCION VALIDA!!!");
             }
         } while (!confirmacion.equalsIgnoreCase("S"));
 
