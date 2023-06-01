@@ -36,7 +36,7 @@ public class servicioJuego {
         ArrayList<Carta> mazo = new ArrayList();
         for (int j = 0; j < palos.length; j++)
         {
-            for (int i = 0; i <= 12; i++)
+            for (int i = 1; i <= 12; i++)
             {
                 if (i == 8 || i == 9)
                 {
