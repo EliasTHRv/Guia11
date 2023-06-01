@@ -57,7 +57,7 @@ public class Juego {
                 if (jugador.getMojado())
                 {
                     System.out.println("Corchazo para vos");
-                    System.out.println("Finalizo el juego, el jugador " + jugador.getNombreJugador()+ " se mojo");
+                    System.out.println("Finalizo el juego, el jugador " + jugador.getNombreJugador()+ " se mojo.");
                     juegoIniciado = false;
                     break;
                 } else
